@@ -11,8 +11,8 @@ services:
       # - FLASK_APP=project/__init__.py
       - FLASK_ENV=production
       - APP_SETTINGS=project.config.ProductionConfig
-      - DATABASE_URL=postgres://postgres:postgres@users-db:5432/users_prod # new
-      - DATABASE_TEST_URL=postgres://postgres:postgres@users-db:5432/users_test # new
+      - DATABASE_URL=postgres://postgres:${DBPASSWORD}@www.iforest.net:5432/users_prod # new
+      - DATABASE_TEST_URL=postgres://postgres:${DBPASSWORD}@www.iforest.net:5432/users_test # new
     depends_on: # new
       - users-db
 
