@@ -1,12 +1,17 @@
 # services/users/project/__init__.py
+import os
 
 from flask_sqlalchemy import SQLAlchemy  # new
 from flask import Flask
-import os  # new
+from flask_debugtoolbar import DebugToolbarExtension
+from flask_cors import CORS
+
 import werkzeug
 werkzeug.cached_property = werkzeug.utils.cached_property
 
 db = SQLAlchemy()
+toolbar = DebugToolbarExtension()
+cors = CORS()
 
 
 def create_app(script_info=None):
@@ -16,6 +21,8 @@ def create_app(script_info=None):
     app.config.from_object(app_settings)
 
     db.init_app(app)
+    toolbar.init_app(app)
+    cors.init_app(app)
 
     from project.api.users import users_blueprint
     app.register_blueprint(users_blueprint)
