@@ -11,10 +11,7 @@ auth_blueprint = Blueprint('auth', __name__)
 def register_user():
     # get post data
     post_data = request.get_json()
-    response_object = {
-        'status': 'fail',
-        'message': 'Invalid payload.'
-    }
+    response_object = {'status': 'fail', 'message': 'Invalid payload.'}
     if not post_data:
         return jsonify(response_object), 400
 
@@ -46,10 +43,7 @@ def register_user():
 @auth_blueprint.route('/auth/login', methods=['POST'])
 def login_user():
     post_data = request.get_json()
-    response_object = {
-        'status': 'fail',
-        'message': 'Invalid payload.'
-    }
+    response_object = {'status': 'fail', 'message': 'Invalid payload.'}
     if not post_data:
         return jsonify(response_object), 400
     email = post_data.get('email')
